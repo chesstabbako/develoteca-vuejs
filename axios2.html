@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <script src="vue2.js"></script>
+    <script src="axios.min.js"></script>
+
+</head>
+<body>
+
+  <div id="app">
+    <h1>Listado de Precio de Bitcoin</h1>
+  
+    <section v-if="errored">
+      <p>Lo sentimos, no es posible obtener la información en este momento, por favor intente nuevamente mas tarde</p>
+    </section>
+  
+    <section v-else>
+      <div v-if="loading">Cargando...</div>
+  
+      <div
+        v-else
+        v-for="currency in info"
+        class="currency"
+      >
+
+        {{ currency.description }}:
+
+        <span class="lighten">
+          <span v-html="currency.symbol"></span>{{ currency.rate_float | currencydecimal }}
+        </span>
+        
+    </div>
+  
+    </section>
+  </div> 
+
+<script>
+
+new Vue({
+
+  el: '#app',
+  data () {
+    return {
+      info: null,
+      loading: true,
+      errored: false
+    }
+  },
+  filters: {
+    currencydecimal (value) {
+      return value.toFixed(2)
+    }
+  },
+  mounted () {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => {
+        this.info = response.data.bpi
+      })
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+      .finally(() => this.loading = false)
+  }
+})
+
+    </script>
+ 
+</body>
+</html>

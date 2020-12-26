@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <script src="vue2.js"></script>
+
+</head>
+<body>
+
+    <div id="elemento">
+    
+    
+     <input v-model="mensaje" type="text" />
+     <h1>Mayúscula: {{ mensaje | mayuscula }}</h1>
+     <h1> contador {{ mensaje | contador }}</h1>
+
+    </div>
+
+    <script>
+
+    Vue.filter('mayuscula', function(mensaje) {
+
+      return mensaje.toUpperCase(); 
+
+    })
+
+    new Vue({
+
+      el:"#elemento",
+      data:{
+
+       mensaje: ""
+
+      }, 
+      
+      filters: {
+
+        contador: function(mensaje) { return mensaje.length; }
+
+      }
+
+        
+    });
+
+
+
+    </script>
+ 
+</body>
+</html>

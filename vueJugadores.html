@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue1</title>
+    <script src="vue2.js"></script>
+
+</head>
+<body>
+
+    <div id="elemento">
+    
+     <p v-if="intentos<3">Intentos: {{ intentos }}</p>
+     <p v-else> Ya tienes 3 intentos </p>
+    
+     <p>Jugador A: {{ valorA }}</p>
+     <p>Jugador B: {{ valorB }}</p>
+
+     <h1> Resultado: {{ resultado }} </h1>
+
+     <input type="button" v-on:click="jugar" :disabled="intentos==3" value="Jugar">
+     <input v-if="intentos==3" type="button" v-on:click="reiniciar" value="Reiniciar">
+     
+    </div>
+
+    <script>
+
+    new Vue({
+
+      el:"#elemento",
+      data:{
+
+        valorA: 0,
+        valorB: 0,
+        resultado: "--",
+        intentos: 0
+
+      },
+      methods:{
+
+        reiniciar: function(){
+
+          this.intentos=0;
+          this.valorA=0;
+          this.valorB=0;
+          this.resultado= "--";
+
+        },
+
+        jugar: function(){
+
+          this.valorA= Math.round(Math.random()*10);
+
+          this.valorB= Math.round(Math.random()*10);
+
+          var resultado="";
+
+          if(this.valorA>this.valorB){
+          
+            resultado= "Gana jugadorA";
+           
+          }else if(this.valorA<this.valorB){
+
+            resultado= "Gana jugadorB";
+
+          }else{
+
+            resultado= "Empate";
+
+          }
+
+          this.intentos++;
+
+          this.resultado= resultado;
+
+        }
+
+      }
+        
+    });
+
+
+
+    </script>
+ 
+</body>
+</html>

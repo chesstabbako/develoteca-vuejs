@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Anime</title>
+    <script src="vue2.js"></script>
+
+</head>
+<body>
+
+    <div id="elemento">
+    
+      <ul>
+
+        <li  v-for="canal in canales">
+
+          El canal  <strong> {{ canal.canal }} </strong> 
+          está dirigido por: <strong>  {{canal.nombre }} </strong>
+         
+        </li>
+      
+      </ul>
+
+    </div>
+
+    <script>
+
+    new Vue({
+
+      el:"#elemento",
+      data:{
+
+        canales: [
+        
+        {"canal": "Develoteca", "nombre": "Oscar"},
+        {"canal": "PildorasInfor", "nombre": "Juan"},
+        {"canal": "AlexDesign", "nombre": "Alex"},
+
+        ],
+      
+      boton:"",
+
+      },
+
+      methods: {
+        
+        nameboton: function(e){
+      
+        this.boton= e.target.innerText;
+
+        }
+
+      },
+        
+    });
+
+    </script>
+ 
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="vue2.js"></script>
+    <script src="vue-router.js"></script>
+
+
+</head>
+<body>
+
+    <div id="elemento">
+    
+      <router-link to="/inicio" class="btn btn-success">
+        inicio
+      </router-link>
+
+      <router-link to="/mision" class="btn btn-danger">
+        mision
+      </router-link>
+    
+      <router-link to="/vision" class="btn btn-primary">
+        vision
+      </router-link>
+    
+      <router-view></router-view>
+    
+    </div>
+
+    <script>
+
+      const inicio= {
+
+        template: '<div class="alert alert-success mt-2">Inicio</div>'
+
+      } 
+
+      const mision= {
+
+        template: '<div class="alert alert-danger mt-2">Mision</div>'
+
+      } 
+
+      const vision= {
+
+        template: '<div class="alert alert-primary mt-2">Vision</div>'
+
+      } 
+
+      const router = new VueRouter({
+
+      routes: [
+        
+        {path: '/inicio', component: inicio},
+        {path: '/mision', component: mision},
+        {path: '/vision', component: vision},
+
+      ]
+
+      })
+
+    new Vue({
+
+      el:"#elemento",
+      router
+      
+    });
+
+    </script>
+ 
+</body>
+</html>

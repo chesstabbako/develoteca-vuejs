@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <script src="vue2.js"></script>
+
+</head>
+<body>
+
+    <div id="elemento">
+
+      <input v-model="url" size="70" type="text" />
+
+      <select v-model="option">
+
+      <option value="maxresdefault">Max resolution</option>
+      <option value="sddefault">Standard resolution</option>
+      <option value="hqdefault" >HQ resolution</option>
+
+      </select>
+       
+      <br>
+      <p><strong>Image:</strong></p>
+
+      <img v-bind:src="img">
+    
+    </div>
+
+    <script>
+
+    new Vue({
+
+      el:"#elemento",
+      data:{
+
+        url:"https://www.youtube.com/watch?v=5ZsOFHR5CoM&list=PLSuKjujFoGJ2RBs4bX03JPuqJtHqJme9B&index=9",
+        option:"hqdefault",
+        src:"http://img.youtube.com/vi/5ZsOFHR5Co/maxresdefault.jpg"
+
+      },
+
+      computed: {
+        
+         img: function(){
+        
+          // var id= (this.url).split("v=")[1].split("&list=")[0];
+          var id= (this.url).split("v=")[1].substring(0,11);
+          return this.src= "http://img.youtube.com/vi/"+ id + "/" + this.option + ".jpg"
+
+         }
+
+      },
+        
+    });
+
+
+    </script>
+ 
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component local</component></title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="vue2.js"></script>
+
+</head>
+<body>
+
+    <div id="elemento">
+    
+      <contador clase-boton="btn btn-success"></contador>
+      <contador clase-boton="btn btn-danger mx-1"></contador>
+      <contador clase-boton="btn btn-info mx-5"></contador>
+
+    </div>
+
+    <div id="elemento1">
+    
+      <contador clase-boton="btn btn-success mt-5"></contador><!--Este se puede usar aquí porque 
+        es global y se puede usar dondequiera-->
+
+      <mensaje></mensaje><!--Solo se puede usar aquí porque es local, solo se apunta para
+      usarse en #elemento1-->
+
+    </div>
+
+    <script>
+
+    Vue.component('contador', {
+     
+      data:function(){
+
+        return {
+
+          counter:0,
+
+        }
+
+      },
+
+      template: '<button v-bind:class="claseBoton" v-on:click="counter++"> Van {{ counter }} Click </button>',
+
+      props: ['claseBoton']
+
+    })
+
+    new Vue({
+
+      el:"#elemento",
+        
+    })
+
+    var componenteElement={
+    
+      template: '<div class="alert alert-success mt-5">Hola a todos</div>'
+
+    }
+
+    new Vue({
+
+      el:"#elemento1",
+      components:{
+
+      mensaje: componenteElement
+
+      }
+  
+    })
+
+    </script>
+
+</body>
+</html>

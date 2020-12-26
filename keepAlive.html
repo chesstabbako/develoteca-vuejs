@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Alive</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="vue2.js"></script>
+
+</head>
+<body>
+
+    <div id="elemento">
+
+      <a href="#home" class="btn btn-success" @click="pagina('home')">Home</a>
+      <a href="#pedidos" class="btn btn-danger" @click="pagina('pedidos')">Pedidos</a>
+      <a href="#muestras" class="btn btn-primary" @click="pagina('muestras')">Muestras</a>
+    
+      <!-- <p>{{ paginaActual }}</p> -->
+
+      <keep-alive>
+      
+        <component v-bind:is="paginaActual"></component>
+         
+      </keep-alive>
+
+      <p>Es: <strong>{{ paginaActual }}</strong></p>
+
+    </div>
+
+    <script>
+
+    new Vue({
+    
+      el:"#elemento",
+    
+      data:{
+
+        paginaActual: 'home',
+       
+      },
+
+      methods: {
+
+        pagina:function(p){
+
+         return this.paginaActual= p;
+
+        }
+        
+      },
+
+      components:{
+
+        home: {
+          
+          template:'<h1 class="alert alert-success mt-5">Home</h1>'
+
+        },
+
+        pedidos:{
+
+          template:'<h1 class= "alert alert-danger mt-5">Pedidos</h1>'
+
+        },
+
+        muestras:{
+
+          template:'<h1 class= "alert alert-primary mt-5">Muestras</h1>'
+
+        },
+
+      }
+  
+    })
+
+    </script>
+
+</body>
+</html>
