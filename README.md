@@ -1,3 +1,3 @@
 # develoteca-vuejs
 
-These were practiced using the youtube channel 'develotea'. Go there if you want to understand more about them.
+These were practiced using the youtube channel 'develoteca'. Go there if you want to understand a little bit more about them.
