@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube</title>
-    <script src="vue2.js"></script>
+    <script src="js/vue2.js"></script>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 
         url:"https://www.youtube.com/watch?v=5ZsOFHR5CoM&list=PLSuKjujFoGJ2RBs4bX03JPuqJtHqJme9B&index=9",
         option:"hqdefault",
-        src:"http://img.youtube.com/vi/5ZsOFHR5Co/maxresdefault.jpg"
+        src:"http://img.youtube.com/vi/5ZsOFHR5Co/hqdefault.jpg"
 
       },
 
@@ -45,7 +45,8 @@
         
          img: function(){
         
-          // var id= (this.url).split("v=")[1].split("&list=")[0];
+          /*var id= (this.url).split("v=")[1].split("&list=")[0]; 
+          Solo sirve cuando hay lista.*/
           var id= (this.url).split("v=")[1].substring(0,11);
           return this.src= "http://img.youtube.com/vi/"+ id + "/" + this.option + ".jpg"
 

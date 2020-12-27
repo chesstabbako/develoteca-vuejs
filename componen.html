@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Component local</component></title>
+    <title>Component local</title>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="vue2.js"></script>
+    <script src="js/vue2.js"></script>
 
 </head>
 <body>
@@ -31,18 +31,18 @@
     <script>
 
     Vue.component('contador', {
-     
+    
       data:function(){
-
+        
         return {
-
+        
           counter:0,
-
+        
         }
 
       },
 
-      template: '<button v-bind:class="claseBoton" v-on:click="counter++"> Van {{ counter }} Click </button>',
+      template: '<button v-bind:class="claseBoton" v-on:click="counter++"> {{ counter }} Click </button>',
 
       props: ['claseBoton']
 

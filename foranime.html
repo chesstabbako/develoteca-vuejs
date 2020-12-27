@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Anime</title>
-    <script src="vue2.js"></script>
+    <script src="js/vue2.js"></script>
 
 </head>
 <body>
@@ -17,13 +17,16 @@
            {{ 11-n }}
         </li>
 
-
         <h1 v-if="boton!=''">{{ boton }}</h1>
+
         <li  v-for="item in items">
 
-         <button v-on:click="nameboton">
-           {{ item }}
-         </button>
+          <button v-on:click="nameboton">
+
+            {{ item }}
+
+          </button>
+
        </li>
 
       </ul>
@@ -36,7 +39,7 @@
 
       el:"#elemento",
       data:{
-
+       
         items: [
         
         "Naruto",
@@ -44,8 +47,9 @@
         "Pokemon"
 
         ],
+      
         boton:"",
-
+      
       },
 
       methods: {
