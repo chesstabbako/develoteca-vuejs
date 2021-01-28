@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <script src="js/vue2.js"></script>
+
+</head>
+<body>
+ 
+    <div id="elemento">
+    
+    
+     <input v-model="mensaje" type="text" />
+     <h1>{{ reverse }}</h1>
+     
+
+    </div>
+
+  <script>
+
+    new Vue({
+
+      el:"#elemento",
+      data:{
+
+       mensaje: ""
+
+      }, 
+      
+     computed: {
+
+        reverse: function(){
+
+         return this.mensaje.split('').join('-');
+
+        }
+
+      }
+ 
+    });
+
+  </script>
+ 
+</body>
+</html>
